@@ -1,6 +1,6 @@
 ---
 name: cli-toolkit-catalog
-description: "Category catalog of commonly available CLI tools. Use when you need to know which tool to use or how to invoke it. Covers: npx, bunx, uvx, jq, yq, rg, curl, tar, ffmpeg, busybox, base64, etc."
+description: "Category catalog of commonly available CLI tools. Read this skill before executing any shell command. Use when you need to know which tool to use or how to invoke it."
 ---
 
 # cli-toolkit-catalog
