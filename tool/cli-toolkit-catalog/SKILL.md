@@ -11,14 +11,14 @@ CLI Tool Category Catalog
 
 ## Principle
 
-1. **Check before use**: Run `which <tool>` (or `Get-Command <tool>` on PowerShell) to verify availability.
+1. **Check before use**: Run `which <command>` (or `Get-Command <command>` on PowerShell) to verify availability.
 2. **For full usage**: Always run the command shown in the Help column.
+3. **Quick examples**: If a tldr client (e.g. `tldr`) is installed, prefer `tldr <command>` for concise usage examples over `--help`.
 
 ## Package Runners
 
-The `npx`, `bunx`, and `uvx` prefixes below indicate that the tool is not a
-system-installed binary but an npm or PyPI package invoked through a runner
-that downloads and executes it on-the-fly.
+The `npx`, `bunx`, and `uvx` commands below are not system-installed binaries
+but package runners that download and execute npm or PyPI packages on-the-fly.
 
 **npx**: executes npm packages without a global install.
 
@@ -29,65 +29,84 @@ This catalog only uses `npx` in examples for consistency.
 
 **uvx**: executes PyPI packages without a virtual-env setup.
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `npx` | Run npm packages on-the-fly | `npx --help` |
-| `bunx` | Run npm packages via Bun | `bunx --help` |
-| `uvx` | Run PyPI packages on-the-fly | `uvx --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| npx | `npx` | Run npm packages on-the-fly | `npx --help` |
+| bunx | `bunx` | Run npm packages via Bun | `bunx --help` |
+| uvx | `uvx` | Run PyPI packages on-the-fly | `uvx --help` |
 
 ## Text & Data
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `jq` | Query/transform JSON | `jq --help` |
-| `yq` | Query/transform YAML/TOML/XML/CSV | `yq --help` |
-| `rg` | Search file contents with regex | `rg --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| jq | `jq` | Query/transform JSON | `jq --help` |
+| yq | `yq` | Query/transform YAML/TOML/XML/CSV | `yq --help` |
+| ripgrep | `rg` | Search file contents with regex | `rg --help` |
 
 ## File Archiving
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `tar` | Create/extract tar archives | `tar --help` |
-| `zip` / `unzip` | Create/extract ZIP archives | `zip --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| tar | `tar` | Create/extract tar archives | `tar --help` |
+| zip / unzip | `zip` / `unzip` | Create/extract ZIP archives | `zip --help` |
 
 ## Network
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `curl` | Make HTTP requests | `curl --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| curl | `curl` | Make HTTP requests | `curl --help` |
 
 ## Media Processing
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `ffmpeg` | Convert/process audio & video | `ffmpeg --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| ffmpeg | `ffmpeg` | Convert/process audio & video | `ffmpeg --help` |
 
 ## Shell Utilities
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `busybox` | Portable Unix utilities in one binary | `busybox --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| busybox | `busybox` | Portable Unix utilities in one binary | `busybox --help` |
+| tlrc | `tldr` | Show simplified command help (TL;DR pages) | `tldr --help` |
+
+### Unix Shell Utilities
+
+These tools are natively available on Linux/macOS.
+On Windows, it should prefix with `busybox` (e.g. `busybox dos2unix`).
+
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| dos2unix | `dos2unix` | Convert line endings CRLF → LF | `dos2unix --help` |
+| unix2dos | `unix2dos` | Convert line endings LF → CRLF | `unix2dos --help` |
 
 ## Encoding & Conversion
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `base64` | Encode/decode Base64 | `base64 --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| base64 | `base64` | Encode/decode Base64 | `base64 --help` |
+
+## Linting
+
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| [editorconfig-checker] | `editorconfig-checker` | Verify files match .editorconfig rules | `editorconfig-checker --help` |
 
 ## Scaffolding
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `npx tiged` | Download a git repo snapshot without history | `npx tiged --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| tiged | `npx tiged` | Download a git repo snapshot without history | `npx tiged --help` |
 
 ## Skill Management
 
-| Tool | Purpose | Help |
-|------|---------|------|
-| `npx skills` | Install and manage agent skills | `npx skills --help` |
+| Tool | Command | Purpose | Help |
+|------|---------|---------|------|
+| skills | `npx skills` | Install and manage agent skills | `npx skills --help` |
 
 ## Further reference
 
 This skill intentionally omits all flags and detailed usage.
 Run the command shown in the Help column for full documentation.
 Do not search the web for tool docs when `--help` is available locally.
+
+[editorconfig-checker]: https://github.com/editorconfig-checker/editorconfig-checker
