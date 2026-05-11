@@ -1,9 +1,9 @@
 ---
-name: tiged
+name: tiged-tool
 description: "Scaffold projects by downloading a git repo's snapshot without history. Use whenever the user wants to 'clone without git history', 'download a template', 'scaffold from a repo', 'bootstrap a project', references tiged/degit, or asks to pull code from GitHub/GitLab/Bitbucket/etc. for inspection or as a starting point."
 ---
 
-# tiged
+# tiged-tool
 
 Project Scaffolding and Repo Inspection
 

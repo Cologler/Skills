@@ -7,4 +7,4 @@ Each skill provides specialized instructions and workflows for an AI agent to ha
 
 | Skill | Description |
 |-------|-------------|
-| [tiged](tool/tiged/SKILL.md) | A scaffolding tool to download a git repo's snapshot without history |
+| [tiged](tool/tiged-tool/SKILL.md) | A scaffolding tool to download a git repo's snapshot without history |
