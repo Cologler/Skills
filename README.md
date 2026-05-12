@@ -9,3 +9,4 @@ Each skill provides specialized instructions and workflows for an AI agent to ha
 |-------|-------------|
 | [cli-toolkit-catalog](tool/cli-toolkit-catalog/SKILL.md) | Category catalog of commonly available CLI tools |
 | [tiged](tool/tiged-tool/SKILL.md) | A scaffolding tool to download a git repo's snapshot without history |
+| [poethepoet](tool/poethepoet-tool/SKILL.md) | Run and manage Poe tasks in Python projects |
