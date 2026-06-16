@@ -1,0 +1,41 @@
+set shell := ["pwsh", "-NoProfile", "-cwa"]
+tmpdir    := `mktemp -d`
+docs-dir  := 'references/docs'
+
+update-docs: generate-docs cleanup-docs && cleanup-tmpdir
+  Remove-Item -Recurse '{{docs-dir}}'
+  Copy-Item -Recurse '{{tmpdir}}/src/book/en/src' '{{docs-dir}}'
+
+debug: generate-docs cleanup-docs
+
+generate-docs:
+  npx tiged https://github.com/casey/just "{{tmpdir}}/src"
+  cd "{{tmpdir}}/src" && cargo run --package generate-book
+
+cleanup-docs:
+  # remove sections from Installation
+  rg --pcre2 -U -o '(?m)^    - \[Installation\]\([^)]+\.md\)(?:\r?\n(?!    - \[).*)*' \
+    '{{tmpdir}}/src/book/en/src/SUMMARY.md' \
+    | rg -o '\(([^)]+\.md)\)' -r '$1' \
+    | % { Remove-Item "{{tmpdir}}/src/book/en/src/$_";  }
+
+  # remove sections from Editor Support
+  rg --pcre2 -U -o '(?m)^    - \[Editor Support\]\([^)]+\.md\)(?:\r?\n(?!    - \[).*)*' \
+    '{{tmpdir}}/src/book/en/src/SUMMARY.md' \
+    | rg -o '\(([^)]+\.md)\)' -r '$1' \
+    | % { Remove-Item "{{tmpdir}}/src/book/en/src/$_";  }
+
+  # remove sections from Contributing
+  rg --pcre2 -U -o '(?m)^    - \[Contributing\]\([^)]+\.md\)(?:\r?\n(?!    - \[).*)*' \
+    '{{tmpdir}}/src/book/en/src/SUMMARY.md' \
+    | rg -o '\(([^)]+\.md)\)' -r '$1' \
+    | % { Remove-Item "{{tmpdir}}/src/book/en/src/$_"; }
+
+  Remove-Item '{{tmpdir}}/src/book/en/src/changelog.md'
+  Remove-Item '{{tmpdir}}/src/book/en/src/backwards-compatibility.md'
+
+  # finally remove SUMMARY.md
+  Remove-Item '{{tmpdir}}/src/book/en/src/SUMMARY.md'
+
+cleanup-tmpdir:
+  Remove-Item -Recurse '{{tmpdir}}'
