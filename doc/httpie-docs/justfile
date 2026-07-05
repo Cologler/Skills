@@ -1,0 +1,7 @@
+set shell := ["pwsh", "-NoProfile", "-cwa"]
+docs-url := 'https://github.com/httpie/cli/raw/refs/heads/master/docs/README.md'
+docs-file := 'references/docs/README.md'
+
+update-docs:
+  Invoke-WebRequest -Uri '{{docs-url}}' -OutFile '{{docs-file}}'
+  if ($IsWindows) { unix2dos '{{docs-file}}' }
