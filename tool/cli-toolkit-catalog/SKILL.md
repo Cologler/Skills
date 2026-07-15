@@ -40,14 +40,16 @@ This catalog only uses `npx` in examples for consistency.
 |------|---------|---------|
 | jq | `jq` | Query/transform JSON |
 | yq | `yq` | Query/transform YAML/TOML/XML/CSV |
-| ripgrep | `rg` | Search file contents with regex |
+| ripgrep | `rg` | Fast recursive regex search; replaces grep for most searches |
 
 ## File Archiving
 
 | Tool | Command | Purpose |
 |------|---------|---------|
+| gzip | `gzip` | Compress/decompress gzip files |
 | tar | `tar` | Create/extract tar archives |
 | zip / unzip | `zip` / `unzip` | Create/extract ZIP archives |
+| zstd | `zstd` | Compress/decompress Zstandard files |
 
 ## Network
 
