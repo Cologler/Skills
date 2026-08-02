@@ -1,0 +1,5 @@
+[file "references/docs/README.md"]
+	url = https://github.com/casey/just/blob/master/README.md
+	sha = 13bf03f642f4cec7799c19f1f8f039e1cb3b095d
+	etag = 1445e92cbd77e2f5db9fbdd46d67ab6d56f1796fee8c81f998ebfac6cb0f5487
+	weak
