@@ -1,0 +1,99 @@
+# CLI Tool Category Catalog
+
+## Package Runners
+
+The `npx`, `bunx`, and `uvx` commands below are not system-installed binaries
+but package runners that download and execute npm or PyPI packages on-the-fly.
+
+**npx**: executes npm packages without a global install.
+
+**bunx**: executes npm packages via the Bun runtime (faster than npx).
+In most cases `bunx` can replace `npx`; if the user's primary runtime is Bun,
+the agent may substitute `bunx` for `npx` freely.
+This catalog only uses `npx` in examples for consistency.
+
+**uvx**: executes PyPI packages without a virtual-env setup.
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| npx | `npx` | Run npm packages on-the-fly |
+| bunx | `bunx` | Run npm packages via Bun |
+| uvx | `uvx` | Run PyPI packages on-the-fly |
+
+## Text & Data
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| jq | `jq` | Query/transform JSON |
+| yq | `yq` | Query/transform YAML/TOML/XML/CSV |
+| ripgrep | `rg` | Fast recursive regex search; replaces grep for most searches |
+
+## File Archiving
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| gzip | `gzip` | Compress/decompress gzip files |
+| tar | `tar` | Create/extract tar archives |
+| zip / unzip | `zip` / `unzip` | Create/extract ZIP archives |
+| zstd | `zstd` | Compress/decompress Zstandard files |
+
+## Network
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| curl | `curl` | Make HTTP requests |
+
+## Media Processing
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| ffmpeg | `ffmpeg` | Convert/process audio & video |
+
+## Shell Utilities
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| busybox | `busybox` | Portable Unix utilities in one binary |
+| tlrc | `tldr` | Show simplified command help (TL;DR pages) |
+
+### Unix Shell Utilities
+
+These tools are natively available on Linux/macOS.
+On Windows, it should prefix with `busybox` (e.g. `busybox dos2unix`).
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| dos2unix | `dos2unix` | Convert line endings CRLF → LF |
+| unix2dos | `unix2dos` | Convert line endings LF → CRLF |
+
+## Encoding & Conversion
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| base64 | `base64` | Encode/decode Base64 |
+
+## Linting
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| [editorconfig-checker] | `editorconfig-checker` | Verify files match .editorconfig rules |
+
+## Scaffolding
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| tiged | `npx tiged` | Download a git repo snapshot without history |
+
+## Skill Management
+
+| Tool | Command | Purpose |
+|------|---------|---------|
+| skills | `npx skills` | Install and manage agent skills |
+
+## Further reference
+
+This catalog intentionally omits all flags and detailed usage.
+Run `<command> --help` for full documentation unless an explicit exception is documented here.
+Do not search the web for tool docs when `--help` is available locally.
+
+[editorconfig-checker]: https://github.com/editorconfig-checker/editorconfig-checker
