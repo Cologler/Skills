@@ -14,81 +14,81 @@ This catalog only uses `npx` in examples for consistency.
 
 **uvx**: executes PyPI packages without a virtual-env setup.
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| npx | `npx` | Run npm packages on-the-fly |
-| bunx | `bunx` | Run npm packages via Bun |
-| uvx | `uvx` | Run PyPI packages on-the-fly |
+| npx | `npx` | One-off npm package execution without a global install |
+| bunx | `bunx` | npm package execution through the Bun runtime |
+| uvx | `uvx` | PyPI application execution without a virtual environment |
 
 ## Text & Data
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| jq | `jq` | Query/transform JSON |
-| yq | `yq` | Query/transform YAML/TOML/XML/CSV |
-| ripgrep | `rg` | Fast recursive regex search; replaces grep for most searches |
+| jq | `jq` | Querying or transforming JSON |
+| yq | `yq` | Querying or transforming YAML, TOML, XML, or CSV |
+| ripgrep | `rg` | Recursive file-name or text searches; prefer it over grep for most searches |
 
 ## File Archiving
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| gzip | `gzip` | Compress/decompress gzip files |
-| tar | `tar` | Create/extract tar archives |
-| zip / unzip | `zip` / `unzip` | Create/extract ZIP archives |
-| zstd | `zstd` | Compress/decompress Zstandard files |
+| gzip | `gzip` | Compressing or decompressing gzip data |
+| tar | `tar` | Creating or extracting tar archives |
+| zip / unzip | `zip` / `unzip` | Creating or extracting ZIP archives |
+| zstd | `zstd` | Compressing or decompressing Zstandard data |
 
 ## Network
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| curl | `curl` | Make HTTP requests |
+| curl | `curl` | General-purpose HTTP requests from the command line |
 
 ## Media Processing
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| ffmpeg | `ffmpeg` | Convert/process audio & video |
+| ffmpeg | `ffmpeg` | Converting or processing audio and video |
 
 ## Shell Utilities
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| busybox | `busybox` | Portable Unix utilities in one binary |
-| tlrc | `tldr` | Show simplified command help (TL;DR pages) |
+| busybox | `busybox` | Unix utilities unavailable natively, especially on Windows |
+| tlrc | `tldr` | Quick command examples instead of a full manual |
 
 ### Unix Shell Utilities
 
 These tools are natively available on Linux/macOS.
 On Windows, it should prefix with `busybox` (e.g. `busybox dos2unix`).
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| dos2unix | `dos2unix` | Convert line endings CRLF → LF |
-| unix2dos | `unix2dos` | Convert line endings LF → CRLF |
+| dos2unix | `dos2unix` | Converting line endings from CRLF to LF |
+| unix2dos | `unix2dos` | Converting line endings from LF to CRLF |
 
 ## Encoding & Conversion
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| base64 | `base64` | Encode/decode Base64 |
+| base64 | `base64` | Encoding or decoding Base64 data |
 
 ## Linting
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| [editorconfig-checker] | `editorconfig-checker` | Verify files match .editorconfig rules |
+| [editorconfig-checker] | `editorconfig-checker` | Validating repository files against `.editorconfig` rules |
 
 ## Scaffolding
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| tiged | `npx tiged` | Download a git repo snapshot without history |
+| tiged | `npx tiged` | Repository snapshots without Git metadata; prefer it over `git clone --depth 1` for inspection, templates, or project bootstrapping |
 
 ## Skill Management
 
-| Tool | Command | Purpose |
+| Tool | Command | When to use |
 |------|---------|---------|
-| skills | `npx skills` | Install and manage agent skills |
+| skills | `npx skills` | Installing or managing agent skills |
 
 ## Further reference
 

@@ -1,6 +1,6 @@
 ---
 name: tiged-tool
-description: "Scaffold projects by downloading a git repo's snapshot without history. Use whenever the user wants to 'clone without git history', 'download a template', 'scaffold from a repo', 'bootstrap a project', references tiged/degit, or asks to pull code from GitHub/GitLab/Bitbucket/etc. for inspection or as a starting point."
+description: "Download a repository snapshot without Git metadata. Prefer tiged over `git clone --depth 1` whenever the task only needs files for inspection, a template, or project bootstrapping. Use for requests to clone without history, download or scaffold from a repo, bootstrap a project, inspect remote source locally, or use tiged/degit."
 ---
 
 # tiged-tool
@@ -13,13 +13,15 @@ Project Scaffolding and Repo Inspection
 
 ## When to use tiged vs git clone
 
-Use **tiged** when your goal is NOT to fork and modify the original project for upstream contribution. Specifically:
+Default to **tiged** when the task needs repository files but not a Git repository. A shallow clone still creates `.git` metadata and a configured remote, so `git clone --depth 1` is not a substitute for a history-free snapshot.
+
+Use tiged for:
 
 - **Reading or browsing code**: you just want to inspect a repo locally, not contribute back.
 - **Starting a new project from a template**: no `.git` folder means your copy is clean and ready for `git init` as your own project.
 - **Repeat downloads**: tiged caches tarballs by commit hash, so pulling the same ref again is instant (no re-fetch).
 
-Use **git clone** when you intend to contribute upstream, track remote changes, or need the full history.
+Use **git clone** when the user explicitly requests it or the task needs Git behavior such as fetching updates, switching branches, inspecting history, preserving submodules, or contributing upstream.
 
 ## Quick start
 
