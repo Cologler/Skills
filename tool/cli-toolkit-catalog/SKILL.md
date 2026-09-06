@@ -13,5 +13,5 @@ Tool selection remains the agent's responsibility and depends on the task, envir
 
 ## Catalog
 
-Read [refs/catalog.md](refs/catalog.md) for the CLI tool category catalog.
+Read [references/catalog.md](references/catalog.md) for the CLI tool category catalog.
 Read it only once per context. If its contents already appear earlier in the current context, reuse them instead of reading the file again.
