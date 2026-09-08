@@ -42,6 +42,7 @@ This catalog only uses `npx` in examples for consistency.
 | Tool | Command | When to use |
 |------|---------|---------|
 | curl | `curl` | General-purpose HTTP requests from the command line |
+| dra | `dra` | Downloading GitHub release assets, with automatic selection for the current OS and architecture or optional executable installation |
 
 ## Media Processing
 
@@ -55,6 +56,7 @@ This catalog only uses `npx` in examples for consistency.
 |------|---------|---------|
 | busybox | `busybox` | Unix utilities unavailable natively, especially on Windows |
 | tlrc | `tldr` | Quick command examples instead of a full manual |
+| [bkt] | `bkt` | Reusing cached results of expensive commands within a chosen TTL, such as repeated `curl` GET requests where briefly stale responses are acceptable |
 
 ### Unix Shell Utilities
 
@@ -97,3 +99,4 @@ Run `<command> --help` for full documentation unless an explicit exception is do
 Do not search the web for tool docs when `--help` is available locally.
 
 [editorconfig-checker]: https://github.com/editorconfig-checker/editorconfig-checker
+[bkt]: https://github.com/dimo414/bkt
