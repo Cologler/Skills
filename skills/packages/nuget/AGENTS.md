@@ -1,0 +1,6 @@
+# NuGet Package Skills
+
+1. For a project-local skill, first inspect every project in its repository or solution for the target package, including imported package references and resolved dependencies. A central `PackageVersion` entry alone does not prove installation. If no project references the package, ask whether to install it or remove this skill, and wait for the user's choice before either action. This check concerns the consuming project, not this skill catalog.
+2. Keep each skill focused on when, why, and how to use the package. Briefly identify the operation it replaces and its concrete advantages over that operation. Include the package check above in each skill so it also applies when the skill is copied elsewhere. In the prerequisite, include an installation command with the full NuGet package ID, to run only if the user chooses installation.
+3. Describe triggering tasks in terms of user needs, without assuming the agent already knows or has chosen the package. Keep descriptions and instructions as concise as possible. Prefer short code examples with comments when they explain usage more clearly than prose.
+4. Read the package's official README. Include common usage only, and defer uncommon details to the project's documentation through the required Further reference section.
