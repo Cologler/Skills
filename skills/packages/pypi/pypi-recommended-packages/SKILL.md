@@ -22,6 +22,16 @@ Choose for an asyncio-based HTTP client and server in the same framework; unlike
 **fastapi**: [github](https://github.com/fastapi/fastapi) #http #api\
 Choose for HTTP APIs with type-based request validation and automatic OpenAPI documentation; unlike aiohttp, it builds these API features into the framework.
 
+**yarl**: [github](https://github.com/aio-libs/yarl) #url #http\
+Choose for an immutable URL object with convenient path and query manipulation and automatic URL encoding, rather than assembling components with `urllib.parse`.
+
+```python
+from yarl import URL
+
+url = (URL("https://example.com") / "hello world").with_query(lang="en")
+print(url)  # https://example.com/hello%20world?lang=en
+```
+
 ## Data processing
 
 **beautifulsoup4**: [https://git.launchpad.net/beautifulsoup] #html #xml\
