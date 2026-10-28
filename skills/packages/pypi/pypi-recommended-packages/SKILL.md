@@ -19,6 +19,9 @@ Choose for both synchronous and asynchronous HTTP clients with the same API; it 
 **aiohttp**: [github](https://github.com/aio-libs/aiohttp) #http #async\
 Choose for an asyncio-based HTTP client and server in the same framework; unlike httpx, it also provides a web server.
 
+**fastapi**: [github](https://github.com/fastapi/fastapi) #http #api\
+Choose for HTTP APIs with type-based request validation and automatic OpenAPI documentation; unlike aiohttp, it builds these API features into the framework.
+
 ## Data processing
 
 **beautifulsoup4**: [https://git.launchpad.net/beautifulsoup] #html #xml\
@@ -30,11 +33,25 @@ Choose for direct HTML and XML processing with XPath and XSLT; it can also serve
 **pydantic**: [github](https://github.com/pydantic/pydantic) #validation #typing\
 Choose when external data needs runtime validation and conversion from type-annotated models; standard dataclasses do not perform this validation automatically.
 
+**typeguard**: [github](https://github.com/agronholm/typeguard) #typing #validation\
+Choose to check objects or function arguments and return values against type annotations at runtime, rather than defining pydantic models for data validation and conversion.
+
+**dacite**: [github](https://github.com/konradhalas/dacite) #dataclasses #conversion\
+Choose to construct standard dataclasses from dictionaries, including nested structures. Unlike pydantic, it is not a general data validation library.
+
 **PyYAML**: [github](https://github.com/yaml/pyyaml) #yaml #serialization\
 Choose when YAML support is required; the Python standard library has no YAML parser. Use safe loading for untrusted input.
 
+**msgpack**: [github](https://github.com/msgpack/msgpack-python) #serialization #binary\
+Choose for compact, cross-language binary serialization when human-readable JSON or YAML is not required.
+
 **python-dateutil**: [github](https://github.com/dateutil/dateutil) #datetime\
 Choose for flexible date parsing, calendar-relative arithmetic, or recurrence rules beyond the standard `datetime` API.
+
+## Configuration
+
+**environs**: [github](https://github.com/sloria/environs) #configuration #environment\
+Choose for environment-based configuration with type conversion, validation, defaults, and `.env` support instead of parsing values from `os.environ` by hand.
 
 ## Application interfaces
 
@@ -50,10 +67,45 @@ Choose for styled text, tables, progress displays, and tracebacks without implem
 **typer**: [github](https://github.com/fastapi/typer) #cli\
 Choose for command-line interfaces derived from Python function signatures and type hints, with less argument configuration than `argparse`.
 
+## Databases
+
+**aiosqlite**: [github](https://github.com/omnilib/aiosqlite) #sqlite #async\
+Choose for SQLite access in asyncio applications without blocking the event loop on queries; unlike direct `sqlite3` calls, it runs each connection's operations on a worker thread.
+
+**tinydb**: [github](https://github.com/msiemens/tinydb) #database #document\
+Choose for a lightweight, serverless document database with a simple Python API and JSON storage. Unlike SQLite, it does not provide ACID guarantees or support access from multiple threads or processes.
+
+## Caching
+
+**diskcache**: [github](https://github.com/grantjenks/python-diskcache) #cache #persistence\
+Choose for a disk-backed cache shared safely across threads and processes, with expiration and eviction policies beyond the in-memory `functools.lru_cache`.
+It uses SQLite and can also provide a persistent key-value store through `Index`, which does not evict or expire entries. Large values may be stored in separate files outside the database, depending on serialization and the configurable size threshold.
+
+## Queues
+
+**persist-queue**: [github](https://github.com/peter-wangxu/persist-queue) #queue #persistence\
+Choose for thread-safe queues that retain items on disk across restarts, unlike the in-memory `queue.Queue`. It offers file and SQLite backends, including an acknowledgement-based SQLite queue.
+
+## Synchronization
+
+**filelock**: [github](https://github.com/tox-dev/filelock) #locking #cross-platform\
+Choose for cross-platform coordination between processes using a lock file, without implementing separate OS-specific locking code.
+
+**portalocker**: [github](https://github.com/WoLpH/portalocker) #locking #cross-platform\
+Choose to lock an open file directly or coordinate across machines using Redis; filelock's basic API instead coordinates through a separate lock file.
+
+## Cancellation
+
+**cancel-token**: [github](https://github.com/Novakov/py-cancel-token) #cancellation\
+Choose for cooperative cancellation with shared cancellation state and callbacks, without implementing a token yourself. Unlike `asyncio.Task.cancel()`, consumers must check the token or register callbacks.
+
 ## Development tools
 
 **pytest**: [github](https://github.com/pytest-dev/pytest) #testing\
 Choose over `unittest` for plain assert statements with detailed failure output, reusable fixtures, and concise test parametrization.
+
+**pytest-cov**: [github](https://github.com/pytest-dev/pytest-cov) #testing #coverage\
+Choose for coverage.py integration with pytest, including automatic reporting, per-test coverage contexts, and support for pytest-xdist.
 
 **hypothesis**: [github](https://github.com/HypothesisWorks/hypothesis) #testing #property-based #mpl\
 Choose to generate diverse test inputs and shrink failures to simpler examples; it complements test runners such as pytest.
