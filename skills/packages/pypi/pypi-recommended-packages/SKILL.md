@@ -34,6 +34,9 @@ print(url)  # https://example.com/hello%20world?lang=en
 
 ## Data processing
 
+**asq**: [github](https://github.com/sixty-north/asq) #iterables #query\
+Choose for LINQ-style, chainable queries over Python iterables when a fluent sequence of filtering, sorting, and projection is preferable to combining comprehensions and standard-library functions.
+
 **bidict**: [github](https://github.com/jab/bidict) #mapping #mpl\
 Choose for one-to-one mappings with efficient lookups in both directions, instead of maintaining a separate reverse dictionary.
 
@@ -115,6 +118,9 @@ aware.add(seconds=1)  # 03:00:00+02:00, after the DST transition
 
 ## Utilities
 
+**decorator**: [github](https://github.com/micheles/decorator) #decorators #functions\
+Choose to define reusable, signature-preserving decorators and configurable decorator factories without writing nested wrappers around `functools.wraps`.
+
 **boltons**: [github](https://github.com/mahmoud/boltons) #utilities #collections\
 A collection of Python utilities for iteration, nested data, files, mappings, caches, dates, strings, and more. Consider it as a fallback when other available solutions do not meet the task's needs.
 
@@ -139,11 +145,19 @@ Choose for XDG Base Directory Specification paths without external dependencies;
 **rich**: [github](https://github.com/Textualize/rich) #terminal #formatting\
 Choose for styled text, tables, progress displays, and tracebacks without implementing terminal formatting by hand.
 
+**alive-progress**: [github](https://github.com/rsalmei/alive-progress) #terminal #progress\
+Choose for animated progress bars with live throughput and ETA; unlike the broader terminal formatting toolkit rich, it specializes in progress feedback.
+
 **humanize**: [github](https://github.com/python-humanize/humanize) #formatting #localization\
 Choose for localized, human-readable times, file sizes, and numbers; unlike the general-purpose boltons collection, it focuses on display formatting.
 
 **typer**: [github](https://github.com/fastapi/typer) #cli\
 Choose for command-line interfaces derived from Python function signatures and type hints, with less argument configuration than `argparse`.
+
+## File I/O
+
+**aiofiles**: [github](https://github.com/Tinche/aiofiles) #files #async\
+Choose for an awaitable file API in asyncio applications; it delegates blocking file operations to a thread pool instead of blocking the event loop or requiring manual `asyncio.to_thread` calls.
 
 ## Databases
 
