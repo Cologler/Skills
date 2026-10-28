@@ -99,6 +99,9 @@ Choose to construct standard dataclasses from dictionaries, including nested str
 **PyYAML**: [github](https://github.com/yaml/pyyaml) #yaml #serialization\
 Choose when YAML support is required; the Python standard library has no YAML parser. Use safe loading for untrusted input.
 
+**tomlkit**: [github](https://github.com/python-poetry/tomlkit) #toml #configuration\
+Choose to edit TOML while preserving comments and formatting; the standard library's `tomllib` parses TOML but does not write it.
+
 **orjson**: [github](https://github.com/ijl/orjson) #json #serialization #mpl\
 Choose for fast JSON serialization with built-in support for dataclasses and datetime objects; unlike `json.dumps`, `orjson.dumps` returns UTF-8 bytes.
 
