@@ -88,6 +88,31 @@ Choose for compact, cross-language binary serialization when human-readable JSON
 **python-dateutil**: [github](https://github.com/dateutil/dateutil) #datetime\
 Choose for flexible date parsing, calendar-relative arithmetic, or recurrence rules beyond the standard `datetime` API.
 
+```python
+from datetime import datetime
+from dateutil.parser import parse
+
+datetime.strptime("2024-01-31", "%Y-%m-%d")
+datetime.strptime("31 Jan 2024", "%d %b %Y")
+parse("2024-01-31")  # Same date without specifying a format
+parse("31 Jan 2024")  # Same parser for a different format
+```
+
+**pendulum**: [github](https://github.com/python-pendulum/pendulum) #datetime #timezone\
+Choose for timezone-aware datetime manipulation, calendar arithmetic, and localized formatting through an extended datetime API; python-dateutil also provides recurrence rules.
+
+```python
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+import pendulum
+
+standard = datetime(2024, 3, 31, 1, 59, 59, tzinfo=ZoneInfo("Europe/Paris"))
+standard + timedelta(seconds=1)  # 02:00:00+01:00, a nonexistent local time
+
+aware = pendulum.datetime(2024, 3, 31, 1, 59, 59, tz="Europe/Paris")
+aware.add(seconds=1)  # 03:00:00+02:00, after the DST transition
+```
+
 ## Utilities
 
 **boltons**: [github](https://github.com/mahmoud/boltons) #utilities #collections\
@@ -97,6 +122,11 @@ A collection of Python utilities for iteration, nested data, files, mappings, ca
 
 **environs**: [github](https://github.com/sloria/environs) #configuration #environment\
 Choose for environment-based configuration with type conversion, validation, defaults, and `.env` support instead of parsing values from `os.environ` by hand.
+
+## Credentials
+
+**keyring**: [github](https://github.com/jaraco/keyring) #credentials #security\
+Choose to store and retrieve credentials through an available system keyring, such as Windows Credential Locker, macOS Keychain, or Secret Service on Linux.
 
 ## Application interfaces
 
@@ -108,6 +138,9 @@ Choose for XDG Base Directory Specification paths without external dependencies;
 
 **rich**: [github](https://github.com/Textualize/rich) #terminal #formatting\
 Choose for styled text, tables, progress displays, and tracebacks without implementing terminal formatting by hand.
+
+**humanize**: [github](https://github.com/python-humanize/humanize) #formatting #localization\
+Choose for localized, human-readable times, file sizes, and numbers; unlike the general-purpose boltons collection, it focuses on display formatting.
 
 **typer**: [github](https://github.com/fastapi/typer) #cli\
 Choose for command-line interfaces derived from Python function signatures and type hints, with less argument configuration than `argparse`.
@@ -149,6 +182,11 @@ Choose for cross-platform coordination between processes using a lock file, with
 
 **portalocker**: [github](https://github.com/WoLpH/portalocker) #locking #cross-platform\
 Choose to lock an open file directly or coordinate across machines using Redis; filelock's basic API instead coordinates through a separate lock file.
+
+## Event handling
+
+**pyee**: [github](https://github.com/jfhbrook/pyee) #events #async\
+Choose for named events with registered listeners, including async handlers; unlike `asyncio.Event`, it dispatches event payloads to callbacks.
 
 ## Async concurrency
 
