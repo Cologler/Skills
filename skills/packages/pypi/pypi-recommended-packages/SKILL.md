@@ -13,11 +13,11 @@ When the user asks for Python package recommendations, prefer relevant packages 
 
 ## HTTP
 
-**httpx**: [github](https://github.com/encode/httpx) #http #client\
-Choose for both synchronous and asynchronous HTTP clients with the same API; it also applies timeouts by default.
+**httpx2**: [github](https://github.com/pydantic/httpx2) #http #client\
+Choose for synchronous and asynchronous HTTP clients with the same API and default timeouts. It is a maintained HTTPX fork; check Python version and integration compatibility when migrating.
 
 **aiohttp**: [github](https://github.com/aio-libs/aiohttp) #http #async\
-Choose for an asyncio-based HTTP client and server in the same framework; unlike httpx, it also provides a web server.
+Choose for an asyncio-based HTTP client and server in the same framework; unlike httpx2, it also provides a web server.
 
 **fastapi**: [github](https://github.com/fastapi/fastapi) #http #api\
 Choose for HTTP APIs with type-based request validation and automatic OpenAPI documentation; unlike aiohttp, it builds these API features into the framework.
