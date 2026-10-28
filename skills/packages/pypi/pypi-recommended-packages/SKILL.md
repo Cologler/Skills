@@ -26,9 +26,7 @@ Choose for HTTP APIs with type-based request validation and automatic OpenAPI do
 Choose for an immutable URL object with convenient path and query manipulation and automatic URL encoding, rather than assembling components with `urllib.parse`.
 
 ```python
-from yarl import URL
-
-url = (URL("https://example.com") / "hello world").with_query(lang="en")
+url = (yarl.URL("https://example.com") / "hello world").with_query(lang="en")
 print(url)  # https://example.com/hello%20world?lang=en
 ```
 
@@ -38,8 +36,6 @@ print(url)  # https://example.com/hello%20world?lang=en
 Choose for LINQ-style, chainable queries over Python iterables when a fluent sequence of filtering, sorting, and projection is preferable to combining comprehensions and standard-library functions.
 
 ```python
-from asq import query
-
 words = ["pear", "kiwi", "fig", "plum", "lime", "apple"]
 
 # Standard library: filter, sort by length then alphabetically, take three, uppercase.
@@ -47,7 +43,7 @@ filtered = (word for word in words if len(word) >= 4)
 standard = [word.upper() for word in sorted(filtered, key=lambda word: (len(word), word))[:3]]
 
 # asq: express the same steps as a chain.
-result = (query(words).where(lambda word: len(word) >= 4)
+result = (asq.query(words).where(lambda word: len(word) >= 4)
           .order_by(len).then_by().take(3).select(str.upper).to_list())
 # Both produce ["KIWI", "LIME", "PEAR"].
 ```
@@ -56,20 +52,16 @@ result = (query(words).where(lambda word: len(word) >= 4)
 Choose to sort strings containing numbers in natural numeric order, such as numbered filenames; Python's `sorted` compares strings lexicographically by default.
 
 ```python
-from natsort import natsorted
-
 files = ["file10", "file2", "file1"]
-sorted(files)     # ["file1", "file10", "file2"]
-natsorted(files)  # ["file1", "file2", "file10"]
+sorted(files)             # ["file1", "file10", "file2"]
+natsort.natsorted(files)  # ["file1", "file2", "file10"]
 ```
 
 **bidict**: [github](https://github.com/jab/bidict) #mapping #mpl\
 Choose for one-to-one mappings with efficient lookups in both directions, instead of maintaining a separate reverse dictionary.
 
 ```python
-from bidict import bidict
-
-codes = bidict({"us": "United States"})
+codes = bidict.bidict({"us": "United States"})
 codes.inverse["United States"]  # "us"
 ```
 
@@ -83,9 +75,7 @@ Choose for direct HTML and XML processing with XPath and XSLT; it can also serve
 Choose to define composable grammars directly in Python when structured or nested text is cumbersome to parse with regular expressions.
 
 ```python
-from pyparsing import Word, alphas
-
-greet = Word(alphas) + "," + Word(alphas) + "!"
+greet = pyparsing.Word(pyparsing.alphas) + "," + pyparsing.Word(pyparsing.alphas) + "!"
 hello = "Hello, World!"
 greet.parseString(hello) # ['Hello', ',', 'World', '!']
 ```
@@ -94,9 +84,7 @@ greet.parseString(hello) # ['Hello', ',', 'World', '!']
 Choose to extract fields from strings with format-style patterns; for nested or more complex grammars, pyparsing provides composable parsing expressions.
 
 ```python
-from parse import parse
-
-print(parse("count={value:d}", "count=42")["value"])  # 42
+print(parse.parse("count={value:d}", "count=42")["value"])  # 42
 ```
 
 **pydantic**: [github](https://github.com/pydantic/pydantic) #validation #typing\
@@ -121,25 +109,18 @@ Choose for compact, cross-language binary serialization when human-readable JSON
 Choose for flexible date parsing, calendar-relative arithmetic, or recurrence rules beyond the standard `datetime` API.
 
 ```python
-from datetime import datetime
-from dateutil.parser import parse
-
-datetime.strptime("2024-01-31", "%Y-%m-%d")
-datetime.strptime("31 Jan 2024", "%d %b %Y")
-parse("2024-01-31")  # Same date without specifying a format
-parse("31 Jan 2024")  # Same parser for a different format
+datetime.datetime.strptime("2024-01-31", "%Y-%m-%d")
+datetime.datetime.strptime("31 Jan 2024", "%d %b %Y")
+dateutil.parser.parse("2024-01-31")  # Same date without specifying a format
+dateutil.parser.parse("31 Jan 2024")  # Same parser for a different format
 ```
 
 **pendulum**: [github](https://github.com/python-pendulum/pendulum) #datetime #timezone\
 Choose for timezone-aware datetime manipulation, calendar arithmetic, and localized formatting through an extended datetime API; python-dateutil also provides recurrence rules.
 
 ```python
-from datetime import datetime, timedelta
-from zoneinfo import ZoneInfo
-import pendulum
-
-standard = datetime(2024, 3, 31, 1, 59, 59, tzinfo=ZoneInfo("Europe/Paris"))
-standard + timedelta(seconds=1)  # 02:00:00+01:00, a nonexistent local time
+standard = datetime.datetime(2024, 3, 31, 1, 59, 59, tzinfo=zoneinfo.ZoneInfo("Europe/Paris"))
+standard + datetime.timedelta(seconds=1)  # 02:00:00+01:00, a nonexistent local time
 
 aware = pendulum.datetime(2024, 3, 31, 1, 59, 59, tz="Europe/Paris")
 aware.add(seconds=1)  # 03:00:00+02:00, after the DST transition
