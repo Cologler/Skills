@@ -34,6 +34,16 @@ print(url)  # https://example.com/hello%20world?lang=en
 
 ## Data processing
 
+**bidict**: [github](https://github.com/jab/bidict) #mapping #mpl\
+Choose for one-to-one mappings with efficient lookups in both directions, instead of maintaining a separate reverse dictionary.
+
+```python
+from bidict import bidict
+
+codes = bidict({"us": "United States"})
+codes.inverse["United States"]  # "us"
+```
+
 **beautifulsoup4**: [https://git.launchpad.net/beautifulsoup] #html #xml\
 Choose for convenient navigation and searching of HTML or XML trees; it can use different parsers, including lxml.
 
@@ -78,6 +88,11 @@ Choose for compact, cross-language binary serialization when human-readable JSON
 **python-dateutil**: [github](https://github.com/dateutil/dateutil) #datetime\
 Choose for flexible date parsing, calendar-relative arithmetic, or recurrence rules beyond the standard `datetime` API.
 
+## Utilities
+
+**boltons**: [github](https://github.com/mahmoud/boltons) #utilities #collections\
+A collection of Python utilities for iteration, nested data, files, mappings, caches, dates, strings, and more. Consider it as a fallback when other available solutions do not meet the task's needs.
+
 ## Configuration
 
 **environs**: [github](https://github.com/sloria/environs) #configuration #environment\
@@ -112,6 +127,9 @@ Choose for an embedded, pure-Python full-text search index without a separate se
 
 ## Caching
 
+**async-lru**: [github](https://github.com/aio-libs/async-lru) #cache #async\
+Choose to cache results of async functions, with optional TTL and shared results for concurrent calls with the same arguments; unlike `functools.lru_cache`, it is designed for coroutines.
+
 **diskcache**: [github](https://github.com/grantjenks/python-diskcache) #cache #persistence\
 Choose for a disk-backed cache shared safely across threads and processes, with expiration and eviction policies beyond the in-memory `functools.lru_cache`.
 It uses SQLite and can also provide a persistent key-value store through `Index`, which does not evict or expire entries. Large values may be stored in separate files outside the database, depending on serialization and the configurable size threshold.
@@ -123,11 +141,19 @@ Choose for thread-safe queues that retain items on disk across restarts, unlike 
 
 ## Synchronization
 
+**aiorwlock**: [github](https://github.com/aio-libs/aiorwlock) #locking #async\
+Choose for an asyncio reader-writer lock when multiple tasks should read concurrently while writes remain exclusive; `asyncio.Lock` provides only mutual exclusion.
+
 **filelock**: [github](https://github.com/tox-dev/filelock) #locking #cross-platform\
 Choose for cross-platform coordination between processes using a lock file, without implementing separate OS-specific locking code.
 
 **portalocker**: [github](https://github.com/WoLpH/portalocker) #locking #cross-platform\
 Choose to lock an open file directly or coordinate across machines using Redis; filelock's basic API instead coordinates through a separate lock file.
+
+## Async concurrency
+
+**asyncer**: [github](https://github.com/fastapi/asyncer) #async #concurrency\
+Choose for typed helpers built on AnyIO to run blocking functions in worker threads and manage concurrent tasks, with convenient argument and return-value type support.
 
 ## Cancellation
 

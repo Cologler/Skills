@@ -4,7 +4,7 @@ When the skill includes similar packages, explain their differences so users can
 
 Describe why and when to choose each package over standard-library functionality or relevant alternatives, rather than only stating what the package does.
 
-When a package's convenience is clearer in code, include a concise example that demonstrates it.
+Include a concise code example only when it demonstrates a concrete convenience over an actual, practical alternative for the same task, such as a specific standard-library API or established package. Make the difference clear; demonstrating a feature alone is not enough.
 
 For packages with copyleft licenses, add a tag identifying the license, such as `#gpl` for GPL.
 
