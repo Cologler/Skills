@@ -129,8 +129,7 @@ Choose for cooperative cancellation with shared cancellation state and callbacks
 **poetry**: [github](https://github.com/python-poetry/poetry) #dependencies #packaging\
 Choose to manage dependencies, a lockfile, virtual environments, and package builds through one project-oriented tool.
 
-**poetry-dynamic-versioning**: [github](https://github.com/mtkennerly/poetry-dynamic-versioning) #versioning #packaging\
-Choose to derive Poetry project versions from version-control tags during builds, instead of manually updating version fields for each release.
+When using Poetry or seeking its extensions, consult [Poetry extensions](references/poetry-extensions.md).
 
 **poethepoet**: [github](https://github.com/nat-n/poethepoet) #tasks #automation\
 Choose to define reusable project tasks in `pyproject.toml` and run them in the project's virtual environment, instead of maintaining separate shell scripts.
@@ -138,8 +137,7 @@ Choose to define reusable project tasks in `pyproject.toml` and run them in the 
 **pytest**: [github](https://github.com/pytest-dev/pytest) #testing\
 Choose over `unittest` for plain assert statements with detailed failure output, reusable fixtures, and concise test parametrization.
 
-**pytest-cov**: [github](https://github.com/pytest-dev/pytest-cov) #testing #coverage\
-Choose for coverage.py integration with pytest, including automatic reporting, per-test coverage contexts, and support for pytest-xdist.
+When using pytest or seeking its extensions, consult [pytest extensions](references/pytest-extensions.md).
 
 **hypothesis**: [github](https://github.com/HypothesisWorks/hypothesis) #testing #property-based #mpl\
 Choose to generate diverse test inputs and shrink failures to simpler examples; it complements test runners such as pytest.
@@ -147,7 +145,7 @@ Choose to generate diverse test inputs and shrink failures to simpler examples; 
 **ruff**: [github](https://github.com/astral-sh/ruff) #linting #formatting\
 Choose for fast Python linting and formatting in one tool, with rules covering functionality otherwise spread across multiple tools.
 
-The groups above are recommendations, not authorization to install or introduce packages.
+The packages in this skill and its references are recommendations, not authorization to install or introduce packages.
 
 When considering a package for recommendation, consult [discouraged-packages.md](references/discouraged-packages.md). Prefer recommending against packages listed there and explain the recorded reasons. These are recommendations, not prohibitions.
 
