@@ -30,6 +30,26 @@ Choose for convenient navigation and searching of HTML or XML trees; it can use 
 **lxml**: [github](https://github.com/lxml/lxml) #html #xml\
 Choose for direct HTML and XML processing with XPath and XSLT; it can also serve as a parser for Beautiful Soup.
 
+**pyparsing**: [github](https://github.com/pyparsing/pyparsing) #parsing #grammar\
+Choose to define composable grammars directly in Python when structured or nested text is cumbersome to parse with regular expressions.
+
+```python
+from pyparsing import Word, alphas
+
+greet = Word(alphas) + "," + Word(alphas) + "!"
+hello = "Hello, World!"
+greet.parseString(hello) # ['Hello', ',', 'World', '!']
+```
+
+**parse**: [github](https://github.com/r1chardj0n3s/parse) #parsing #text\
+Choose to extract fields from strings with format-style patterns; for nested or more complex grammars, pyparsing provides composable parsing expressions.
+
+```python
+from parse import parse
+
+print(parse("count={value:d}", "count=42")["value"])  # 42
+```
+
 **pydantic**: [github](https://github.com/pydantic/pydantic) #validation #typing\
 Choose when external data needs runtime validation and conversion from type-annotated models; standard dataclasses do not perform this validation automatically.
 
@@ -105,6 +125,15 @@ Choose to lock an open file directly or coordinate across machines using Redis; 
 Choose for cooperative cancellation with shared cancellation state and callbacks, without implementing a token yourself. Unlike `asyncio.Task.cancel()`, consumers must check the token or register callbacks.
 
 ## Development tools
+
+**poetry**: [github](https://github.com/python-poetry/poetry) #dependencies #packaging\
+Choose to manage dependencies, a lockfile, virtual environments, and package builds through one project-oriented tool.
+
+**poetry-dynamic-versioning**: [github](https://github.com/mtkennerly/poetry-dynamic-versioning) #versioning #packaging\
+Choose to derive Poetry project versions from version-control tags during builds, instead of manually updating version fields for each release.
+
+**poethepoet**: [github](https://github.com/nat-n/poethepoet) #tasks #automation\
+Choose to define reusable project tasks in `pyproject.toml` and run them in the project's virtual environment, instead of maintaining separate shell scripts.
 
 **pytest**: [github](https://github.com/pytest-dev/pytest) #testing\
 Choose over `unittest` for plain assert statements with detailed failure output, reusable fixtures, and concise test parametrization.
