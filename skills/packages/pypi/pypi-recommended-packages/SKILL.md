@@ -37,6 +37,32 @@ print(url)  # https://example.com/hello%20world?lang=en
 **asq**: [github](https://github.com/sixty-north/asq) #iterables #query\
 Choose for LINQ-style, chainable queries over Python iterables when a fluent sequence of filtering, sorting, and projection is preferable to combining comprehensions and standard-library functions.
 
+```python
+from asq import query
+
+words = ["pear", "kiwi", "fig", "plum", "lime", "apple"]
+
+# Standard library: filter, sort by length then alphabetically, take three, uppercase.
+filtered = (word for word in words if len(word) >= 4)
+standard = [word.upper() for word in sorted(filtered, key=lambda word: (len(word), word))[:3]]
+
+# asq: express the same steps as a chain.
+result = (query(words).where(lambda word: len(word) >= 4)
+          .order_by(len).then_by().take(3).select(str.upper).to_list())
+# Both produce ["KIWI", "LIME", "PEAR"].
+```
+
+**natsort**: [github](https://github.com/SethMMorton/natsort) #sorting #text\
+Choose to sort strings containing numbers in natural numeric order, such as numbered filenames; Python's `sorted` compares strings lexicographically by default.
+
+```python
+from natsort import natsorted
+
+files = ["file10", "file2", "file1"]
+sorted(files)     # ["file1", "file10", "file2"]
+natsorted(files)  # ["file1", "file2", "file10"]
+```
+
 **bidict**: [github](https://github.com/jab/bidict) #mapping #mpl\
 Choose for one-to-one mappings with efficient lookups in both directions, instead of maintaining a separate reverse dictionary.
 
@@ -84,6 +110,9 @@ Choose to construct standard dataclasses from dictionaries, including nested str
 
 **PyYAML**: [github](https://github.com/yaml/pyyaml) #yaml #serialization\
 Choose when YAML support is required; the Python standard library has no YAML parser. Use safe loading for untrusted input.
+
+**orjson**: [github](https://github.com/ijl/orjson) #json #serialization #mpl\
+Choose for fast JSON serialization with built-in support for dataclasses and datetime objects; unlike `json.dumps`, `orjson.dumps` returns UTF-8 bytes.
 
 **msgpack**: [github](https://github.com/msgpack/msgpack-python) #serialization #binary\
 Choose for compact, cross-language binary serialization when human-readable JSON or YAML is not required.
