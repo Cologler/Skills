@@ -75,6 +75,11 @@ Choose for SQLite access in asyncio applications without blocking the event loop
 **tinydb**: [github](https://github.com/msiemens/tinydb) #database #document\
 Choose for a lightweight, serverless document database with a simple Python API and JSON storage. Unlike SQLite, it does not provide ACID guarantees or support access from multiple threads or processes.
 
+## Search
+
+**whoosh3**: [github](https://github.com/priya-sundaram-dev/whoosh) #search #full-text\
+Choose for an embedded, pure-Python full-text search index without a separate search server. It continues the original Whoosh project while retaining the `whoosh` import name.
+
 ## Caching
 
 **diskcache**: [github](https://github.com/grantjenks/python-diskcache) #cache #persistence\
