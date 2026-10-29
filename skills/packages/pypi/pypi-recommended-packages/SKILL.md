@@ -3,7 +3,7 @@ name: pypi-recommended-packages
 description: Prefer these PyPI packages when a user asks for Python package recommendations.
 metadata:
   homepage: "https://pypi.org/"
-  last-updated: "2026-10-28"
+  last-updated: "2026-10-29"
   generated-by: "gpt-6"
 ---
 
@@ -68,7 +68,7 @@ codes = bidict.bidict({"us": "United States"})
 codes.inverse["United States"]  # "us"
 ```
 
-**beautifulsoup4**: [https://git.launchpad.net/beautifulsoup] #html #xml\
+**beautifulsoup4**: [project](https://git.launchpad.net/beautifulsoup) #html #xml\
 Choose for convenient navigation and searching of HTML or XML trees; it can use different parsers, including lxml.
 
 **lxml**: [github](https://github.com/lxml/lxml) #html #xml\
@@ -80,10 +80,12 @@ Choose over the standard `re` module for features such as Unicode properties, fu
 **pyparsing**: [github](https://github.com/pyparsing/pyparsing) #parsing #grammar\
 Choose to define composable grammars directly in Python when structured or nested text is cumbersome to parse with regular expressions.
 
+For example, turning nested parentheses into nested lists with standard-library tools requires a stack-based parser; `nested_expr` provides this directly.
+
 ```python
-greet = pyparsing.Word(pyparsing.alphas) + "," + pyparsing.Word(pyparsing.alphas) + "!"
-hello = "Hello, World!"
-greet.parseString(hello) # ['Hello', ',', 'World', '!']
+groups = pyparsing.nested_expr()
+groups.parse_string("(alpha (beta gamma))", parse_all=True).as_list()
+# [["alpha", ["beta", "gamma"]]]
 ```
 
 **parse**: [github](https://github.com/r1chardj0n3s/parse) #parsing #text\
@@ -130,12 +132,18 @@ dateutil.parser.parse("31 Jan 2024")  # Same parser for a different format
 **pendulum**: [github](https://github.com/python-pendulum/pendulum) #datetime #timezone\
 Choose for timezone-aware datetime manipulation, calendar arithmetic, and localized formatting through an extended datetime API; python-dateutil also provides recurrence rules.
 
+For elapsed-time arithmetic across a DST transition, Pendulum avoids the UTC round trip needed with `datetime` and `zoneinfo`.
+
 ```python
 standard = datetime.datetime(2024, 3, 31, 1, 59, 59, tzinfo=zoneinfo.ZoneInfo("Europe/Paris"))
-standard + datetime.timedelta(seconds=1)  # 02:00:00+01:00, a nonexistent local time
+# UTC arithmetic avoids nonexistent local times across DST changes.
+standard_next = (
+    standard.astimezone(datetime.timezone.utc) + datetime.timedelta(seconds=1)
+).astimezone(standard.tzinfo)
 
 aware = pendulum.datetime(2024, 3, 31, 1, 59, 59, tz="Europe/Paris")
-aware.add(seconds=1)  # 03:00:00+02:00, after the DST transition
+aware_next = aware.add(seconds=1)
+# Both produce 2024-03-31 03:00:00+02:00.
 ```
 
 ## Utilities
