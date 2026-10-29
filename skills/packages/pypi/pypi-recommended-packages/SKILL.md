@@ -32,6 +32,9 @@ print(url)  # https://example.com/hello%20world?lang=en
 
 ## Data processing
 
+**extended-int**: [github](https://github.com/NeilGirdhar/extended_int) #numbers #infinity\
+Choose when a numeric domain needs to recognize both integers and integer infinity through `ExtendedIntegral` while excluding ordinary floats; `int_inf` is not a built-in `int`.
+
 **asq**: [github](https://github.com/sixty-north/asq) #iterables #query\
 Choose for LINQ-style, chainable queries over Python iterables when a fluent sequence of filtering, sorting, and projection is preferable to combining comprehensions and standard-library functions.
 
@@ -71,6 +74,9 @@ Choose for convenient navigation and searching of HTML or XML trees; it can use 
 **lxml**: [github](https://github.com/lxml/lxml) #html #xml\
 Choose for direct HTML and XML processing with XPath and XSLT; it can also serve as a parser for Beautiful Soup.
 
+**regex**: [github](https://github.com/mrabarnett/mrab-regex) #regex #text\
+Choose over the standard `re` module for features such as Unicode properties, fuzzy matching, or access to repeated captures; rebulk instead combines multiple patterns and resolves matches.
+
 **pyparsing**: [github](https://github.com/pyparsing/pyparsing) #parsing #grammar\
 Choose to define composable grammars directly in Python when structured or nested text is cumbersome to parse with regular expressions.
 
@@ -86,6 +92,9 @@ Choose to extract fields from strings with format-style patterns; for nested or 
 ```python
 print(parse.parse("count={value:d}", "count=42")["value"])  # 42
 ```
+
+**rebulk**: [github](https://github.com/Toilal/rebulk) #matching #text\
+Choose to combine string, regex, and function patterns with rules for matching and resolving overlaps; for parsing structured grammars, use pyparsing.
 
 **pydantic**: [github](https://github.com/pydantic/pydantic) #validation #typing\
 Choose when external data needs runtime validation and conversion from type-annotated models; standard dataclasses do not perform this validation automatically.
@@ -137,6 +146,11 @@ Choose to define reusable, signature-preserving decorators and configurable deco
 **boltons**: [github](https://github.com/mahmoud/boltons) #utilities #collections\
 A collection of Python utilities for iteration, nested data, files, mappings, caches, dates, strings, and more. Consider it as a fallback when other available solutions do not meet the task's needs.
 
+## Logging
+
+**loguru**: [github](https://github.com/Delgan/loguru) #logging\
+Choose for preconfigured logging and convenient file rotation, retention, and compression with less handler setup than the standard `logging` module.
+
 ## Configuration
 
 **environs**: [github](https://github.com/sloria/environs) #configuration #environment\
@@ -174,6 +188,9 @@ Choose for an awaitable file API in asyncio applications; it delegates blocking 
 
 ## Databases
 
+**pypika**: [github](https://github.com/kayak/pypika) #sql #query\
+Choose to compose SQL queries dynamically in Python instead of assembling SQL strings; unlike aiosqlite, it builds queries rather than executing them.
+
 **aiosqlite**: [github](https://github.com/omnilib/aiosqlite) #sqlite #async\
 Choose for SQLite access in asyncio applications without blocking the event loop on queries; unlike direct `sqlite3` calls, it runs each connection's operations on a worker thread.
 
@@ -186,6 +203,9 @@ Choose for a lightweight, serverless document database with a simple Python API 
 Choose for an embedded, pure-Python full-text search index without a separate search server. It continues the original Whoosh project while retaining the `whoosh` import name.
 
 ## Caching
+
+**cachetools**: [github](https://github.com/tkem/cachetools) #cache #memory\
+Choose for in-memory cache mappings and memoization with TTL or eviction policies such as LFU beyond `functools.lru_cache`; use diskcache for persistence or async-lru for coroutine caching.
 
 **async-lru**: [github](https://github.com/aio-libs/async-lru) #cache #async\
 Choose to cache results of async functions, with optional TTL and shared results for concurrent calls with the same arguments; unlike `functools.lru_cache`, it is designed for coroutines.
@@ -226,6 +246,9 @@ Choose for typed helpers built on AnyIO to run blocking functions in worker thre
 Choose for cooperative cancellation with shared cancellation state and callbacks, without implementing a token yourself. Unlike `asyncio.Task.cancel()`, consumers must check the token or register callbacks.
 
 ## Development tools
+
+**dunamai**: [github](https://github.com/mtkennerly/dunamai) #versioning #vcs\
+Choose to derive version strings from version-control tags and commit history through a standalone library or CLI; for integration with Poetry builds, use the poetry-dynamic-versioning plugin.
 
 **poetry**: [github](https://github.com/python-poetry/poetry) #dependencies #packaging\
 Choose to manage dependencies, a lockfile, virtual environments, and package builds through one project-oriented tool.
