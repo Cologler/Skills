@@ -1,6 +1,6 @@
 ---
 name: nuget-package-contextfreetasks
-description: Use when writing C# async library methods that should avoid capturing the synchronization context without repeating ConfigureAwait(false), or when adapting ContextFreeTask methods to Task APIs.
+description: Use when working with C# async methods that will use ConfigureAwait(false).
 metadata:
   homepage: "https://github.com/ufcpp/ContextFreeTask"
   version: "ContextFreeTasks 0.4.0"
@@ -12,36 +12,44 @@ metadata:
 
 ## Prerequisite
 
-For a project-local skill, inspect every project in the consuming repository or solution for `ContextFreeTasks`, including imported package references and resolved dependencies. A central `PackageVersion` entry alone does not prove installation. If no project references it, ask whether to install the package or remove this skill, and wait for the user's choice. Only if installation is chosen, run `dotnet add <project.csproj> package ContextFreeTasks`. This check does not apply to the skill catalog itself.
+Assume the project already has `ContextFreeTasks` installed. If a compiler error suggests the package is missing, check the affected project's dependencies. If it is absent, ask the user for approval before installing it with `dotnet add <project.csproj> package ContextFreeTasks`.
 
-## When and why
+## Why this package is useful
 
-Use `ContextFreeTask` or `ContextFreeTask<T>` as an async method's return type when its body does not need the caller's synchronization context. This replaces repeated `ConfigureAwait(false)` calls inside that method, reducing repetition and missed awaits. Requires C# 7 or later.
-
-Keep context-dependent code, such as UI updates, outside these methods. This is a `Task` wrapper, not a `ValueTask` allocation optimization or a request to run work on another thread.
+`ContextFreeTask` and `ContextFreeTask<T>` let an async method avoid capturing the synchronization context without adding `ConfigureAwait(false)` to each await. This reduces repetition and the risk of accidentally omitting it.
 
 ## Usage
 
+Use `ContextFreeTask` or `ContextFreeTask<T>` as the return type of an async method that does not need to resume on the captured synchronization context.
+
 ```csharp
 using ContextFreeTasks;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 static async ContextFreeTask<string> ReadTrimmedAsync(HttpClient client, string url)
 {
-    // This method needs no caller context, so ConfigureAwait(false) is unnecessary here.
-    string text = await client.GetStringAsync(url);
+    string text = await client.GetStringAsync(url); // ConfigureAwait(false) is unnecessary here.
     return text.Trim();
 }
+```
 
-// Preserve an existing Task-based API contract with the wrapped Task property.
+Use `ContextFreeTask` instead of `ContextFreeTask<T>` for methods that do not return a value. Both can be awaited directly.
+
+The context-free behavior applies to the method body, not its caller. A caller using ordinary `async Task` still captures its own context when awaiting a `ContextFreeTask`; use `await operation.ConfigureAwait(false)` if the caller also needs to avoid capture.
+
+### Task interoperability
+
+Use `.Task` when a `Task` is required, such as when preserving an existing API contract or passing the operation to `Task.WhenAll`.
+
+```csharp
 static Task<string> ReadAsync(HttpClient client, string url)
     => ReadTrimmedAsync(client, url).Task;
 ```
 
-Use non-generic `async ContextFreeTask` for methods without a result. Await either form directly. Use `.Task` when passing the result to APIs such as `Task.WhenAll`.
+Exposing `.Task` does not change the method body's behavior.
 
-The context-free behavior belongs to the method body. A caller using ordinary `async Task` still captures its own context when awaiting a `ContextFreeTask`; use `await operation.ConfigureAwait(false)` there if that caller also needs to avoid capture. Merely exposing `.Task` does not change the method body's behavior.
+## Notes
+
+Keep code that requires the original context, such as UI updates, outside these methods. `ContextFreeTask` does not move work to another thread or provide `ValueTask`-style allocation optimizations.
 
 ## Further reference
 
