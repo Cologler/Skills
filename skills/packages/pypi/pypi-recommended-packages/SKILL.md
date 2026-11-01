@@ -186,6 +186,9 @@ Choose for animated progress bars with live throughput and ETA; unlike the broad
 **humanize**: [github](https://github.com/python-humanize/humanize) #formatting #localization\
 Choose for localized, human-readable times, file sizes, and numbers; unlike the general-purpose boltons collection, it focuses on display formatting.
 
+**humanfriendly**: [github](https://github.com/xolox/python-humanfriendly) #formatting #parsing\
+Choose to parse and format human-readable sizes and durations, such as CLI input; humanize focuses on localized display formatting.
+
 **typer**: [github](https://github.com/fastapi/typer) #cli\
 Choose for command-line interfaces derived from Python function signatures and type hints, with less argument configuration than `argparse`.
 
