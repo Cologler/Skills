@@ -1,18 +1,14 @@
 ---
 name: nuget-package-contextfreetasks
-description: Use when working with C# async methods that will use ConfigureAwait(false).
+description: Use when writing C# async methods that do not need to capture the synchronization context (such as library or background logic, or code that would use ConfigureAwait(false)), or when modifying existing ContextFreeTask code.
 metadata:
   homepage: "https://github.com/ufcpp/ContextFreeTask"
   version: "ContextFreeTasks 0.4.0"
-  last-updated: "2026-10-16"
+  last-updated: "2026-11-25"
   generated-by: "gpt-6"
 ---
 
 # ContextFreeTasks
-
-## Prerequisite
-
-Assume the project already has `ContextFreeTasks` installed. If a compiler error suggests the package is missing, check the affected project's dependencies. If it is absent, ask the user for approval before installing it with `dotnet add <project.csproj> package ContextFreeTasks`.
 
 ## Why this package is useful
 
@@ -50,6 +46,8 @@ Exposing `.Task` does not change the method body's behavior.
 ## Notes
 
 Keep code that requires the original context, such as UI updates, outside these methods. `ContextFreeTask` does not move work to another thread or provide `ValueTask`-style allocation optimizations.
+
+Assume the project already references the `ContextFreeTasks` NuGet package. Only check the affected project's dependencies if a compiler error suggests it is missing, and ask the user for approval before adding it.
 
 ## Further reference
 

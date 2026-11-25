@@ -4,19 +4,15 @@ description: Use when working with C# dependency properties or attached properti
 metadata:
   homepage: "https://github.com/HavenDV/DependencyPropertyGenerator"
   version: "DependencyPropertyGenerator 1.5.1"
-  last-updated: "2026-10-30"
+  last-updated: "2026-11-25"
   generated-by: "gpt-6.1-terra"
 ---
 
 # DependencyPropertyGenerator
 
-## Prerequisite
-
-Assume the project already has `DependencyPropertyGenerator` installed. If a compiler error suggests the package is missing, check the affected project's dependencies. If it is absent, ask the user for approval before installing it with `dotnet add <project.csproj> package DependencyPropertyGenerator`.
-
 ## Why this package is useful
 
-Attributes replace handwritten dependency-property registration fields, CLR wrappers or attached accessors, and change-callback plumbing. This makes property declarations shorter and easier to read.
+Attributes replace handwritten dependency-property registration fields, CLR wrappers or attached accessors, and change-callback plumbing with a single declaration. This keeps property declarations shorter and easier to read, and prevents mismatches between property names, value types, owner types, and callbacks that might otherwise fail only at runtime.
 
 ## Usage
 
@@ -42,8 +38,6 @@ Apply `AttachedDependencyProperty<TValue, TTarget>` to a static partial owner cl
 using DependencyPropertyGenerator;
 using System.Windows.Controls;
 
-#nullable enable
-
 [AttachedDependencyProperty<object, TreeView>("SelectedItem",
     DefaultBindingMode = DefaultBindingMode.TwoWay)]
 public static partial class TreeViewExtensions
@@ -60,6 +54,8 @@ This generates `SelectedItemProperty`, `GetSelectedItem`, and `SetSelectedItem`.
 ## Notes
 
 The package supports WPF, UWP, WinUI, Uno, Avalonia, and MAUI; property APIs and options vary by platform.
+
+Assume the project already references the `DependencyPropertyGenerator` NuGet package. Only check the affected project's dependencies if a compiler error suggests it is missing, and ask the user for approval before adding it.
 
 ## Further reference
 
