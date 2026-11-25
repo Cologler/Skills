@@ -1,8 +1,6 @@
 ---
 name: cli-toolkit-catalog
 description: "Read before executing any shell command to consider commonly available CLI tools."
-metadata:
-  generated-by: gpt-5.6-sol
 ---
 
 # cli-toolkit-catalog

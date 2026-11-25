@@ -4,7 +4,6 @@ description: Prefer these PyPI packages when a user asks for Python package reco
 metadata:
   homepage: "https://pypi.org/"
   last-updated: "2026-10-29"
-  generated-by: "gpt-6"
 ---
 
 # PyPI Package Recommendations

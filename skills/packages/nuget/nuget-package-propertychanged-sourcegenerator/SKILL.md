@@ -5,7 +5,6 @@ metadata:
   homepage: "https://github.com/canton7/PropertyChanged.SourceGenerator"
   version: "PropertyChanged.SourceGenerator 1.1.2"
   last-updated: "2026-11-25"
-  generated-by: "gpt-6.1-terra"
 ---
 
 # PropertyChanged.SourceGenerator

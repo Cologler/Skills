@@ -5,7 +5,6 @@ metadata:
   homepage: "https://github.com/HavenDV/DependencyPropertyGenerator"
   version: "DependencyPropertyGenerator 1.5.1"
   last-updated: "2026-11-25"
-  generated-by: "gpt-6.1-terra"
 ---
 
 # DependencyPropertyGenerator

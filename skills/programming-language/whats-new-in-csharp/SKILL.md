@@ -5,7 +5,6 @@ metadata:
   homepage: "https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/"
   version: "C# 12, 13, 14"
   last-updated: "2026-09-20"
-  generated-by: "gpt-6"
 ---
 
 # What's New in C# and .NET

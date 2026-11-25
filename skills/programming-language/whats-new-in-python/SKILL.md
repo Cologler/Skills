@@ -5,7 +5,6 @@ metadata:
   homepage: "https://docs.python.org/3/whatsnew/"
   version: "Python 3.14, 3.15"
   last-updated: "2026-09-20"
-  generated-by: "gpt-6"
 ---
 
 # What's New in Python

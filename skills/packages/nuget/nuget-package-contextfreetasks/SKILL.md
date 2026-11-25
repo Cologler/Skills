@@ -5,7 +5,6 @@ metadata:
   homepage: "https://github.com/ufcpp/ContextFreeTask"
   version: "ContextFreeTasks 0.4.0"
   last-updated: "2026-11-25"
-  generated-by: "gpt-6"
 ---
 
 # ContextFreeTasks
